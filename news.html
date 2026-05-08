@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Smartify Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Keania+One&family=Orbitron:wght@400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="Cover1.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/search.js"></script>
+    <script src="js/modal.js"></script>
+</head>
+<body>
+    <!-- Floating Header -->
+    <header class="glass-header" id="main-header">
+        
+        <a href="index.html" class="header-left glass-pill" style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem; text-decoration: none;">
+            <img src="Cover1.png" alt="Smartify Tech Logo" class="header-logo">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="header-title" style="line-height: 1.1;">Smartify Tech</span>
+            </div>
+        </a>
+
+        <div class="header-right glass-pill" id="header-right-actions">
+            <button id="data-saver-toggle" class="glass-btn data-saver-btn" title="Toggle Data Saver Mode">
+                <i class="fa-solid fa-bolt"></i>
+            </button>
+            <button id="theme-toggle" class="glass-btn theme-toggle-btn" title="Toggle Light/Dark Mode">
+                <div class="half-moon-icon"></div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Morphing Navigation Wrapper -->
+    <div class="morph-nav-wrapper">
+        <!-- Main Nav Pill -->
+        <nav class="morph-nav" id="main-nav-pill">
+            <a href="index.html" class="nav-item" data-tab="home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="videos.html" class="nav-item" data-tab="videos">
+                <i class="fa-solid fa-video"></i>
+                <span>Videos</span>
+            </a>
+            <a href="news.html" class="nav-item active" data-tab="news">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>News</span>
+            </a>
+        </nav>
+
+        <!-- Search FAB Container -->
+        <div class="search-fab-container" id="search-container">
+            <button class="search-fab" id="search-btn" title="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <div class="search-input-wrapper" id="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-inner-icon"></i>
+                <input type="text" id="nav-search-input" placeholder="Search videos, news...">
+                <button class="close-search-btn" id="close-search-btn" title="Close Search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <main style="padding-bottom: 100px;">
+                <section id="news" class="section news-section reveal">
+            <div style="text-align: center; margin-bottom: 0.5rem;">
+                <h2 class="section-title" style="margin-bottom: 0.2rem;">Latest Tech News</h2>
+            </div>
+            
+            <!-- Brand Tabs -->
+            <div class="news-tabs-container">
+                <button class="news-tab active" data-query="Smartphone News OR Realme UI OR OxygenOS OR ColorOS">For You</button>
+                <button class="news-tab" data-query="Realme Smartphone News">
+                    <span style="color: #FFC107;">realme</span>
+                </button>
+                <button class="news-tab" data-query="Oppo Smartphone News">
+                    <span style="color: #008E5A;">OPPO</span>
+                </button>
+                <button class="news-tab" data-query="OnePlus Smartphone News">
+                    <span style="color: #F50057;">OnePlus</span>
+                </button>
+                <button class="news-tab" data-query="Samsung Smartphone News">
+                    <span style="color: #034EA2;">SAMSUNG</span>
+                </button>
+                <button class="news-tab" data-query="Vivo Smartphone News">
+                    <span style="color: #415FFF;">vivo</span>
+                </button>
+                <button class="news-tab" data-query="Xiaomi Smartphone News OR MIUI OR HyperOS">
+                    <span style="color: #FF6900;">Xiaomi</span>
+                </button>
+                <button class="news-tab" data-query="Apple iPhone News">
+                    <i class="fa-brands fa-apple" style="font-size: 1rem;"></i> Apple
+                </button>
+            </div>
+
+            <!-- Google News Label and Refresh Button -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 20px;">
+                <!-- Left Side: Google News Label (No Container) -->
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-newspaper" style="font-size: 1.2rem; background: linear-gradient(135deg, #4285F4, #EA4335, #FBBC05, #34A853); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                    <span style="font-size: 1rem; font-weight: 600; background: linear-gradient(45deg, #4285F4, #EA4335, #FBBC05, #34A853); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Google News</span>
+                </div>
+                
+                <!-- Right Side: Refresh Button (No Container) -->
+                <button id="refresh-news-btn" class="glass-btn" style="background: transparent; border: none; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease; padding: 0;" title="Refresh News">
+                    <i class="fa-solid fa-rotate" style="font-size: 1.1rem; color: #4285F4;"></i>
+                    <span style="font-size: 1rem;">Refresh</span>
+                </button>
+            </div>
+            
+            <!-- Brand Tabs moved to top -->
+            
+            <div class="news-grid" id="news-container">
+                <div class="skeleton" style="height: 200px;"></div>
+                <div class="skeleton" style="height: 200px;"></div>
+            </div>
+            
+            <!-- Show More Button -->
+            <div id="show-more-news-container" style="text-align: center; margin-top: 3rem; display: none;">
+                <button id="show-more-news-btn" style="padding: 0 25px; height: 40px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #4285F4; border: none; color: #ffffff; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);">
+                    <i class="fa-solid fa-newspaper" style="font-size: 1.1rem;"></i>
+                    <span>Show More</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer class="reveal" style="padding: 1rem 0 120px; margin-top: 0; border-top: 1px solid var(--glass-border); text-align: center;">
+        <div style="width: var(--container-width); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 800; opacity: 0.8;">SMARTIFY TECH</div>
+            <div style="display: flex; gap: 2rem; font-size: 0.9rem; color: var(--text-secondary); justify-content: center;">
+                <a href="index.html" style="color: inherit; text-decoration: none;">Home</a>
+                <a href="videos.html" style="color: inherit; text-decoration: none;">Videos</a>
+                <a href="news.html" style="color: inherit; text-decoration: none;">News</a>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Smartify Tech. All rights reserved. <br> <span style="font-size: 0.7rem; opacity: 0.5;">v2.1.0 Polish Pass</span></p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>
+

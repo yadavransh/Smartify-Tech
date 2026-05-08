@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | Smartify Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="cover.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/search.js"></script>
+    <script src="js/modal.js"></script>
+</head>
+<body>
+    <!-- Floating Header -->
+    <header class="glass-header" id="main-header">
+        
+        <a href="index.html" class="header-left glass-pill" style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem; text-decoration: none;">
+            <img src="cover.png" alt="Smartify Tech Logo" class="header-logo">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="header-title" style="line-height: 1.1;">Smartify Tech</span>
+            </div>
+        </a>
+
+        <div class="header-right glass-pill" id="header-right-actions">
+            <button id="theme-toggle" class="glass-btn theme-toggle-btn" title="Toggle Light/Dark Mode">
+                <div class="half-moon-icon"></div>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container glass-card">
+            <a href="index.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="videos.html" class="nav-item">
+                <i class="fa-solid fa-video"></i>
+                <span>Videos</span>
+            </a>
+            <a href="news.html" class="nav-item" id="nav-news-btn">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>News</span>
+            </a>
+            
+            <div class="nav-divider"></div>
+
+            <button class="nav-item search-btn" id="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+            </button>
+
+            <button class="nav-item" id="bottom-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+                <span>Menu</span>
+            </button>
+
+            <!-- Inline Search Input Wrapper -->
+            <div class="nav-search-wrapper" id="nav-search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="nav-search-input" placeholder="Search videos, news...">
+                <button class="close-search-btn" id="close-search-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation Popup Menu (Moved outside for clean stacking) -->
+    <div class="side-drawer-overlay" id="side-drawer-overlay"></div>
+    <div class="side-drawer glass-card" id="side-drawer">
+        <div class="drawer-header">
+            <h3 style="font-size: 1.2rem; font-weight: 700;">Menu</h3>
+            <button class="glass-btn close-drawer" id="close-drawer-btn" style="width: 32px; height: 32px;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html#admin-posts" class="drawer-item"><i class="fa-solid fa-bullhorn"></i> <span>Admin Updates</span></a>
+            <a href="index.html#links" class="drawer-item"><i class="fa-solid fa-link"></i> <span>Connect</span></a>
+            <a href="index.html#support" class="drawer-item"><i class="fa-solid fa-hand-holding-dollar"></i> <span>Support My Work</span></a>
+        </div>
+    </div>
+    <main style="padding-bottom: 100px;">
+        <section class="section" style="width: 100%; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Search</h2>
+            <div class="glass-card" style="padding: 1.5rem; text-align: center; width: 100%; max-width: 1400px; margin: 0 auto; box-sizing: border-box;">
+                <div style="position: relative; width: 100%;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); opacity: 0.5;"></i>
+                    <input type="text" id="main-search-input" class="main-search-input" style="width: 100%; padding: 14px 20px 14px 50px; border-radius: 30px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 1rem; box-sizing: border-box;" placeholder="Search videos, news, articles...">
+                </div>
+                <div id="search-results" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; text-align: left; width: 100%;"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="reveal" style="padding: 1rem 0 120px; margin-top: 0; border-top: 1px solid var(--glass-border); text-align: center;">
+        <div style="width: var(--container-width); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 800; opacity: 0.8;">SMARTIFY TECH</div>
+            <div style="display: flex; gap: 2rem; font-size: 0.9rem; color: var(--text-secondary); justify-content: center;">
+                <a href="index.html" style="color: inherit; text-decoration: none;">Home</a>
+                <a href="videos.html" style="color: inherit; text-decoration: none;">Videos</a>
+                <a href="news.html" style="color: inherit; text-decoration: none;">News</a>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Smartify Tech. All rights reserved. <br> <span style="font-size: 0.7rem; opacity: 0.5;">v2.1.0 Polish Pass</span></p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+
