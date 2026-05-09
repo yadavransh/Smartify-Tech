@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Keania+One&family=Orbitron:wght@400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="Cover1.png">
+    <link rel="icon" type="image/png" href="cropped_circle_image.png">
     <link rel="stylesheet" href="style.css">
     <script src="js/search.js"></script>
     <script src="js/modal.js"></script>
@@ -19,13 +19,14 @@
     <!-- Floating Header -->
     <header class="glass-header" id="main-header">
 
-        <a href="index.html" class="header-left glass-pill"
-            style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem; text-decoration: none;">
-            <img src="Cover1.png" alt="Smartify Tech Logo" class="header-logo">
+        <div class="header-left glass-pill" id="admin-trigger"
+            onclick="document.getElementById('admin-modal').classList.add('active'); document.body.style.overflow = 'hidden';"
+            style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem; cursor: pointer;">
+            <img src="cropped_circle_image.png" alt="Smartify Tech Logo" class="header-logo">
             <div style="display: flex; flex-direction: column; justify-content: center;">
                 <span class="header-title" style="line-height: 1.1;">Smartify Tech</span>
             </div>
-        </a>
+        </div>
 
         <div class="header-right glass-pill" id="header-right-actions">
             <button id="data-saver-toggle" class="glass-btn data-saver-btn" title="Toggle Data Saver Mode">
@@ -75,6 +76,9 @@
     <main style="padding-bottom: 100px;">
         <section id="home" class="section hero-section reveal">
 
+            <span id="open-about-modal" class="know-more-text"
+                onclick="document.getElementById('about-modal').classList.add('active'); document.body.style.overflow = 'hidden';">Know
+                <span class="colorful-part">About Me</span></span>
 
             <div class="glass-card hero-content tilt-element">
                 <div class="hero-cover-bg" style="background-image: url('cover.png');"></div>
@@ -90,12 +94,6 @@
                             <div class="hero-social-icons">
                                 <a href="https://www.youtube.com/@Smartify-Tech1" target="_blank" class="glass-icon"><i
                                         class="fa-brands fa-youtube"></i></a>
-                                <a href="https://www.instagram.com/yadu1c_ransh/" target="_blank" class="glass-icon"><i
-                                        class="fa-brands fa-instagram"></i></a>
-                                <a href="https://x.com/Smartify_TechYT" target="_blank" class="glass-icon"><img
-                                        src="twitter.png" alt="X" style="width: 20px; height: 20px;"></a>
-                                <a href="https://www.reddit.com/user/Decent-Western-5354/" target="_blank"
-                                    class="glass-icon"><i class="fa-brands fa-reddit"></i></a>
                                 <div class="telegram-container">
                                     <button class="glass-icon telegram-toggle-btn" onclick="toggleTelegramMenu(event)"
                                         title="Telegram Groups">
@@ -110,6 +108,12 @@
                                             Group</a>
                                     </div>
                                 </div>
+                                <a href="https://www.instagram.com/yadu1c_ransh/" target="_blank" class="glass-icon"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                <a href="https://x.com/Smartify_TechYT" target="_blank" class="glass-icon"><img
+                                        src="twitter.png" alt="X" style="width: 20px; height: 20px;"></a>
+                                <a href="https://www.reddit.com/user/Decent-Western-5354/" target="_blank"
+                                    class="glass-icon"><i class="fa-brands fa-reddit"></i></a>
                             </div>
                         </div>
                     </div>
@@ -145,9 +149,20 @@
                 </div>
             </div>
 
-            <div style="margin-top: 4rem;">
-                <h3 style="font-family: 'Orbitron', sans-serif; margin-bottom: 2rem; font-size: 1.5rem;">Latest Videos
-                </h3>
+            <!-- Telegram Join Banner -->
+            <div style="margin-top: 2rem; width: 100%;">
+                <a href="https://t.me/smartifytech_yt" target="_blank" class="telegram-banner"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(0, 136, 204, 0.5)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0, 136, 204, 0.3)';"
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #24A1DE 0%, #0088cc 100%); padding: 1.2rem; border-radius: 16px; color: white; text-decoration: none; font-weight: 700; font-family: 'Orbitron', sans-serif; box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3); transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1);">
+                    <i class="fa-brands fa-telegram" style="font-size: 1.8rem;"></i>
+                    <span style="font-size: 1.1rem; letter-spacing: 1px;">Click Here To Join Telegram</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h2 class="section-title">Latest Videos</h2>
+                <p class="section-subtitle">Level up your tech game with our latest uploads.</p>
                 <div class="latest-videos-grid" id="latest-videos-grid">
                     <div class="skeleton" style="height: 200px; width: 100%;"></div>
                     <div class="skeleton" style="height: 200px; width: 100%;"></div>
@@ -162,6 +177,7 @@
         </section>
         <section id="news-preview" class="section news-preview-section reveal">
             <h2 class="section-title">Latest Tech News</h2>
+            <p class="section-subtitle">Stay updated with the latest trends in technology</p>
             <div class="news-horizontal-scroll" id="news-preview-container">
                 <div class="skeleton" style="width: 300px; height: 180px;"></div>
                 <div class="skeleton" style="width: 300px; height: 180px;"></div>
@@ -176,6 +192,7 @@
         </section>
         <section id="links" class="section links-section reveal">
             <h2 class="section-title">Connect With Me</h2>
+            <p class="section-subtitle">Follow me on social media for more updates</p>
             <div class="contact-container" style="display: flex; gap: 2rem; align-items: stretch; flex-wrap: wrap;">
                 <div class="links-grid" style="flex: 1; min-width: 300px; margin-top: 0;">
                     <a href="https://www.youtube.com/@Smartify-Tech1" target="_blank"
@@ -215,6 +232,7 @@
         </section>
         <section id="support" class="section support-section reveal">
             <h2 class="section-title">Support My Work</h2>
+            <p class="section-subtitle">Help me create more awesome content</p>
             <div class="glass-card support-card tilt-element">
                 <p class="support-text"
                     style="font-size: 1.05rem; line-height: 1.6; text-align: center; margin-bottom: 1.5rem; font-weight: 500; color: var(--text-primary);">
@@ -269,11 +287,200 @@
             </p>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/youtube.js"></script>
-    <script src="js/news.js"></script>
-    <script src="script.js"></script>
+
+    <!-- About Me Modal -->
+    <div class="about-modal-overlay" id="about-modal"
+        onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }">
+        <div class="about-modal-card">
+            <button class="close-modal-btn" id="close-about-modal"
+                onclick="document.getElementById('about-modal').classList.remove('active'); document.body.style.overflow = '';"><i
+                    class="fa-solid fa-xmark"></i></button>
+            <div class="about-modal-content">
+                <div class="about-profile-section">
+                    <div class="about-avatar-wrapper" style="position: relative; display: inline-block;">
+                        <img src="Profile Pic.jpg" alt="Ransh" class="about-profile-img">
+                        <span class="avatar-badge"
+                            style="position: absolute; bottom: 12px; right: 0; font-size: 1.2rem; background: var(--glass-bg); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); box-shadow: 0 2px 10px rgba(0,0,0,0.2);">👋</span>
+                    </div>
+                    <h2 class="about-name">Ransh</h2>
+                    <p class="about-subtitle">Indian Tech Creator 🇮🇳</p>
+                </div>
+                <p class="about-description">
+                    Hey Buddies, Ransh here 👋 I’m a growing Indian Tech YouTuber who loves exploring smartphones,
+                    software updates, Android features, Realme UI, ColorOS, hidden tricks, AI tools and futuristic tech
+                    experiences. I create tech videos, updates, tutorials and experiments to help people stay updated
+                    with the latest technology in a simple and interesting way.
+                </p>
+                <div class="about-social-icons">
+                    <a href="#" target="_blank" class="social-icon-btn instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-icon-btn x"><img src="twitter.png" alt="X"
+                            style="width: 20px; height: 20px;"></a>
+                    <a href="#" target="_blank" class="social-icon-btn youtube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Portal Modal -->
+    <div class="about-modal-overlay" id="admin-modal"
+        onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; document.getElementById('admin-login-view').style.display='block'; document.getElementById('admin-login-view').style.opacity='1'; document.getElementById('admin-dashboard-view').style.display='none'; document.getElementById('admin-id-input').value=''; document.getElementById('admin-password-input').value=''; document.getElementById('admin-error-msg').style.display='none'; document.getElementById('admin-error-msg').style.opacity='0'; }">
+        <div class="about-modal-card admin-modal-card">
+            <button class="close-modal-btn" id="close-admin-modal"
+                onclick="document.getElementById('admin-modal').classList.remove('active'); document.body.style.overflow = ''; document.getElementById('admin-login-view').style.display='block'; document.getElementById('admin-login-view').style.opacity='1'; document.getElementById('admin-dashboard-view').style.display='none'; document.getElementById('admin-id-input').value=''; document.getElementById('admin-password-input').value=''; document.getElementById('admin-error-msg').style.display='none'; document.getElementById('admin-error-msg').style.opacity='0';"><i
+                    class="fa-solid fa-xmark"></i></button>
+            <div class="about-modal-content">
+                <!-- Login View -->
+                <div id="admin-login-view">
+                    <h2 class="about-name">Admin Portal</h2>
+                    <p class="about-subtitle">Secure Access</p>
+
+                    <div class="admin-input-group" style="margin-bottom: 1rem; text-align: left;">
+                        <label
+                            style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Login
+                            ID</label>
+                        <input type="text" id="admin-id-input" placeholder="Enter ID" autocomplete="off"
+                            style="width: 100%; padding: 0.6rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem;">
+                    </div>
+
+                    <div class="admin-input-group" style="margin-bottom: 1.5rem; text-align: left;">
+                        <label
+                            style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Password</label>
+                        <div style="position: relative;">
+                            <input type="password" id="admin-password-input" placeholder="Enter Passcode"
+                                autocomplete="new-password"
+                                style="width: 100%; padding: 0.6rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem;">
+                            <span
+                                onclick="const inp = document.getElementById('admin-password-input'); if(inp.type==='password'){inp.type='text'; this.innerHTML='<i class=\'fa-solid fa-eye\'></i>';}else{inp.type='password'; this.innerHTML='<i class=\'fa-solid fa-eye-slash\'></i>';}"
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-secondary);"><i
+                                    class="fa-solid fa-eye-slash"></i></span>
+                        </div>
+                    </div>
+
+                    <div id="admin-error-msg"
+                        style="color: #ff4d4d; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; opacity: 0; transition: opacity 0.3s; background: rgba(255, 77, 77, 0.1); padding: 0.5rem; border-radius: 8px; border: 1px solid rgba(255, 77, 77, 0.2); display: none; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>Wrong Credentials! Try Again.</span>
+                    </div>
+
+                    <button class="admin-login-btn"
+                        onclick="const id=document.getElementById('admin-id-input').value; const pass=document.getElementById('admin-password-input').value; const card=this.closest('.about-modal-card'); const err=document.getElementById('admin-error-msg'); if(id==='RanshYT' && pass==='993136'){ const v1=document.getElementById('admin-login-view'); const v2=document.getElementById('admin-dashboard-view'); v1.style.opacity='0'; setTimeout(()=>{v1.style.display='none'; v2.style.display='block'; v2.style.opacity='0'; setTimeout(()=>{v2.style.opacity='1';},50);},300); err.style.display='none'; err.style.opacity='0'; } else { card.classList.add('shake-effect'); err.style.display='flex'; setTimeout(()=>{err.style.opacity='1';},10); setTimeout(()=>{card.classList.remove('shake-effect');},600); }"
+                        style="width: 100%; padding: 0.7rem; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); border: none; border-radius: 8px; color: white; font-weight: 700; font-family: 'Orbitron', sans-serif; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3); transition: all 0.3s ease;">Login</button>
+                </div>
+
+                <!-- Dashboard View -->
+                <div id="admin-dashboard-view" style="display: none; transition: opacity 0.3s;">
+                    <h2 class="about-name">Dashboard</h2>
+                    <p class="about-subtitle">Welcome Back, Ransh</p>
+
+                    <div class="admin-grid"
+                        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">👥</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #ff007f; text-shadow: 0 0 10px rgba(255, 0, 127, 0.3); margin: 0.2rem 0;">
+                                12.4K</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Website Visitors</div>
+                        </div>
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">🟢</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #00f2fe; text-shadow: 0 0 10px rgba(0, 242, 254, 0.3); margin: 0.2rem 0;">
+                                128</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Active Users</div>
+                        </div>
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">🎥</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #bf5af2; text-shadow: 0 0 10px rgba(191, 90, 242, 0.3); margin: 0.2rem 0;">
+                                135</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Total Videos</div>
+                        </div>
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">📈</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #ffd60a; text-shadow: 0 0 10px rgba(255, 214, 10, 0.3); margin: 0.2rem 0;">
+                                89%</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Engagement Rate</div>
+                        </div>
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">🕒</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #ff9f0a; text-shadow: 0 0 10px rgba(255, 159, 10, 0.3); margin: 0.2rem 0;">
+                                5.4K Hrs</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Watch Time</div>
+                        </div>
+                        <div class="admin-widget"
+                            style="background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center;">
+                            <span style="font-size: 1.2rem;">🎯</span>
+                            <div
+                                style="font-size: 1.1rem; font-weight: 800; color: #30b0c7; text-shadow: 0 0 10px rgba(48, 176, 199, 0.3); margin: 0.2rem 0;">
+                                11.5%</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Avg. Click Rate</div>
+                        </div>
+                    </div>
+
+                    <!-- YouTube Sync Section -->
+                    <div class="admin-sync-section"
+                        style="text-align: left; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                        <h3
+                            style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: 'Orbitron', sans-serif;">
+                            YouTube Video Sync</h3>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="yt-link-input" placeholder="Paste YouTube Video Link"
+                                style="flex: 1; padding: 0.6rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem;">
+                            <button onclick="syncYouTubeVideo()"
+                                style="padding: 0.6rem 1rem; background: #ff0000; border: none; border-radius: 8px; color: white; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-family: 'Orbitron', sans-serif;">Sync</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-settings" style="text-align: left; margin-bottom: 1rem;">
+                        <h3
+                            style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: 'Orbitron', sans-serif;">
+                            Extra Settings</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                                <span>Dark Mode Status</span>
+                                <span style="color: #10b981; font-weight: 700;">ON</span>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                                <span>Data Saver Status</span>
+                                <span style="color: #f59e0b; font-weight: 700;">OFF</span>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                                <span>Last Website Update</span>
+                                <span style="color: var(--text-secondary);">Today</span>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                                <span>Admin Access Active</span>
+                                <span style="color: #10b981; font-weight: 700;">YES</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="admin-logout-btn"
+                        onclick="const v1=document.getElementById('admin-login-view'); const v2=document.getElementById('admin-dashboard-view'); v2.style.opacity='0'; setTimeout(()=>{v2.style.display='none'; v1.style.display='block'; v1.style.opacity='0'; setTimeout(()=>{v1.style.opacity='1'; document.getElementById('admin-id-input').value=''; document.getElementById('admin-password-input').value='';},50);},300);"
+                        style="width: 100%; padding: 0.7rem; background: rgba(255, 59, 48, 0.05); border: 1px solid rgba(255, 59, 48, 0.2); border-radius: 8px; color: #ff453a; font-weight: 700; font-family: 'Orbitron', sans-serif; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Log Out</span>
+                    </button>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+            <script src="js/nav.js"></script>
+            <script src="js/youtube.js"></script>
+            <script src="js/news.js"></script>
+            <script src="script.js"></script>
 </body>
 
 </html>

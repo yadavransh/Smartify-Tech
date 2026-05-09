@@ -365,9 +365,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-
-
+    // About Me Modal Logic (Keydown only, click handled inline)
+    document.addEventListener('keydown', (e) => {
+        const aboutModal = document.getElementById('about-modal');
+        if (e.key === 'Escape' && aboutModal && aboutModal.classList.contains('active')) {
+            aboutModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 });
 
 // --- Telegram Popup Logic ---
@@ -710,6 +715,8 @@ function initApp() {
             document.body.style.display = '';
         }
     });
+
+
 }
 
 // Check if DOM is already ready
@@ -785,6 +792,90 @@ function initClockAndCelestial() {
 
     update();
     setInterval(update, 1000);
+}
+
+function syncYouTubeVideo() {
+    const input = document.getElementById('yt-link-input');
+    const link = input.value.trim();
+    
+    if (!link) {
+        alert('Please paste a YouTube link first!');
+        return;
+    }
+    
+    let videoId = '';
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = link.match(regExp);
+    if (match && match[2].length === 11) {
+        videoId = match[2];
+    } else {
+        alert('Invalid YouTube link! Please use a valid video URL.');
+        return;
+    }
+    
+    const title = "Synced Video (New)";
+    const thumb = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    const pubDate = new Date().toLocaleDateString('en-IN', {
+        day: 'numeric', month: 'short', year: 'numeric'
+    });
+    
+    const latestGrid = document.getElementById('latest-videos-grid');
+    if (latestGrid) {
+        const card = document.createElement('div');
+        card.className = "glass-card tilt-element";
+        card.style.cursor = "pointer";
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+        card.onclick = () => window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+        
+        card.innerHTML = `
+            <div style="position: relative;">
+                <div class="latest-badge" style="position: absolute; top: 10px; left: 10px; background: #00f2fe; color: black; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; z-index: 2;">Synced</div>
+                <img src="${thumb}" alt="${title}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;" onerror="this.src='https://img.youtube.com/vi/${videoId}/0.jpg'">
+            </div>
+            <div style="padding: 1rem;">
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${title}</h3>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">${pubDate}</span>
+            </div>
+        `;
+        
+        if (latestGrid.firstChild) {
+            latestGrid.insertBefore(card, latestGrid.firstChild);
+        } else {
+            latestGrid.appendChild(card);
+        }
+    }
+    
+    const videosContainer = document.getElementById('videos-container');
+    if (videosContainer) {
+        const card = document.createElement('div');
+        card.className = "glass-card video-card tilt-element";
+        card.style.cursor = "pointer";
+        card.onclick = () => window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+        
+        card.innerHTML = `
+            <img src="${thumb}" alt="${title}" class="video-thumbnail" onerror="this.src='https://img.youtube.com/vi/${videoId}/0.jpg'">
+            <div class="video-info">
+                <h3>${title}</h3>
+                <span class="video-stats">${pubDate}</span>
+            </div>
+        `;
+        
+        if (videosContainer.firstChild) {
+            videosContainer.insertBefore(card, videosContainer.firstChild);
+        } else {
+            videosContainer.appendChild(card);
+        }
+    }
+    
+    alert('Video synced successfully!');
+    input.value = '';
+    
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".tilt-element"), {
+            max: 1, speed: 400, gyroscope: false, glare: true, "max-glare": 0.1
+        });
+    }
 }
 
 
